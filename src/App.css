@@ -1,38 +1,169 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+/*  Navbar  */
+
+
+nav{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  height: 60px;
+  background: rgba(34, 30, 32, 1);
+  
+  justify-content: space-between;
+}
+
+.logo a{
+  text-decoration: none;
+}
+
+.logo{
+  width: auto;
+  height: 40px;
+  
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+align-items: center;
+margin: auto auto auto 10px;
+padding: 5px 50px;
+transition: 0.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+.logo i{
+  color:#fff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-right: 2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo span{
+  color:rgb(130, 145, 161);
+  font-weight: 500;
+  margin-left: 2px;
+}
+
+.logo a:hover  i, .logo a:hover span{
+  color:#e6c6d7
+}
+
+/*  Nav Menu*/
+
+.nav_menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#fff;
+  text-decoration: none;
+
+}
+
+.nav_menu_mob{
+  display: none;
+  transition: 0.3s ease-in-out;
+}
+
+.nav_menu_mob.active{
+
+display: flex;
+flex-direction: column;
+position: absolute;
+width: 100%;
+left: 0;
+top:60px;
+bottom: 0;
+background: #ccc;
+justify-content: center;
+align-items: center;
+background: url('https://yalantis.com/uploads/ckeditor/pictures/2916/dribble_perfect.gif') no-repeat;
+background-size: cover;
+transition: 0.3s ease-in-out;
+}
+
+
+.nav_menu_mob.active a{
+
+  text-decoration: none;
+  color:rgb(196, 192, 193);
+  margin: 0 10px;
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+  padding: 20px 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav_menu_mob.active a:hover{
+
+    text-decoration: none;
+    color:rgb(57, 177, 171);
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+    border-bottom: 2px solid transparent;
+    padding: 20px 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    
+    }
+
+
+.nav_menu a{
+  text-decoration: none;
+  color:rgb(187, 179, 179);
+  margin: 0 10px;
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+  padding: 5px 0px;
+}
+
+.nav_menu a:hover{
+  text-decoration: none;
+  color:rgb(185, 65, 65);
+  margin: 0 10px;
+  border-bottom: 2px solid #fff;
+}
+
+.menu_icon{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%,40%);
+  
+  color:#fff;
+  font-size: 1.8rem;
+  display: none;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+  
+
+  .menu_icon{
+    display: block;
   }
+
+  .logo{
+    width: auto;
+    height: 40px;
+    
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, rgb(14,173,173)), color-stop(0.67, rgb(0,255,255)));
+    background-image: -moz-linear-gradient(center bottom, rgb(14,173,173) 33%, rgb(0,255,255) 67% );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    transition: 0.3s ease-in-out;
+  }
+  
+ 
 }
