@@ -1,4 +1,4 @@
-import React, { useEffect, useState , useLayoutEffect} from 'react'
+import React, { useEffect, useState , useLayoutEffect, useRef} from 'react'
 import {Link} from 'react-router-dom'
 
 import { BiMenuAltRight } from "react-icons/bi";
@@ -8,6 +8,10 @@ function Navbar() {
 
     const[isMobileView , setMobileView] = useState(true);
     const[width,setWidth] = useState(window.innerWidth);
+    const[scroll, setScroll] = useState(0);
+
+    const ref = useRef(null);
+
     const[isOpen, setIsOpen] = useState(false);
     const handleMobileNav = () =>{
         setIsOpen(!isOpen);
@@ -16,6 +20,15 @@ function Navbar() {
     const updateSize = () =>{
         setWidth(window.innerWidth);
     }
+    useEffect(() => {
+        function watchScroll() {
+          window.addEventListener("scroll", logit);
+        }
+        watchScroll();
+        return () => {
+          window.removeEventListener("scroll", logit);
+        };
+      });
 
     function useWindowSize() {
         const [size, setSize] = useState([0, 0]);
@@ -33,6 +46,10 @@ function Navbar() {
       const closeMobileMenu = () =>{
           setIsOpen(false);
       }
+
+      function logit() {
+     setScroll(window.pageYOffset);
+     }
 
       // Handle responsive navbar
       useEffect(() => {
@@ -53,7 +70,7 @@ function Navbar() {
       }, window.innerWidth)
   
     return (
-        <nav>
+        <nav className= { isMobileView ? "nav" : scroll>80 ? "nav":"nav active" } >
             
             <div className="logo">
                 <Link to="/"><i>Im</i><span>Logo</span></Link> 
@@ -71,7 +88,7 @@ function Navbar() {
             
              {isOpen ?  <AiOutlineClose/> : <BiMenuAltRight/> } 
             </i>
-        </nav>
+            </nav>
     )
 }
 
